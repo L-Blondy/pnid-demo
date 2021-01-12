@@ -6,6 +6,8 @@ const App = () => {
 
 	const location = useLocation()
 
+	console.log('location:', location)
+
 	return (
 		<div className='app'>
 			<Page key={location.pathname} />

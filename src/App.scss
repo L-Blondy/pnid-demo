@@ -44,13 +44,11 @@ canvas {
   box-shadow: 0 5px 15px -3px #00000020;
   width: 3308px;
   height: 2339px;
-
-  // opacity: 1;
-  // animation: fadeIn 150ms 100ms forwards;
 }
 
 .bounding_box {
   position: absolute;
+  display: block;
   background: red;
   opacity: 0.5;
   animation: fadeIn 300ms forwards;

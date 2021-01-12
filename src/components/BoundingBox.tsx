@@ -1,11 +1,11 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface Props {
 	x: string,
 	y: string,
 	width: string,
 	height: string,
-	onClick: () => void
+	to: string
 }
 
 const BoundingBox = ({
@@ -13,7 +13,7 @@ const BoundingBox = ({
 	y,
 	width,
 	height,
-	onClick
+	to,
 }: Props) => {
 
 	const style = {
@@ -24,7 +24,7 @@ const BoundingBox = ({
 	}
 
 	return (
-		<div className='bounding_box' style={style} onClick={onClick} ></ div>
+		<Link className='bounding_box' style={style} to={to} ></ Link>
 	)
 }
 
