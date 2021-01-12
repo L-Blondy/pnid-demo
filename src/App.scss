@@ -1,0 +1,78 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.app {
+  width: 100vw;
+  height: 100vh;
+  background: #f8f8f8;
+}
+
+.react-transform-component,
+.react-transform-element {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+.image-wrapper,
+.image,
+.konvajs-content,
+canvas {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+}
+
+.react-transform-component,
+.react-transform-element,
+.image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-wrapper {
+  position: relative !important;
+  background: white;
+  box-shadow: 0 5px 15px -3px #00000020;
+  width: 3308px;
+  height: 2339px;
+
+  // opacity: 1;
+  // animation: fadeIn 150ms 100ms forwards;
+}
+
+.bounding_box {
+  position: absolute;
+  background: red;
+  opacity: 0.5;
+  animation: fadeIn 300ms forwards;
+}
+
+.image {
+  transition: opacity 300ms;
+
+  &.pending {
+    opacity: 0;
+  }
+
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
