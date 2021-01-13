@@ -14,6 +14,11 @@ body,
   height: 100vh;
   background: #f8f8f8;
   font-family: 'Segoe UI', 'Roboto', 'Courier', 'Helvetica', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: grab;
+}
+
+.app:active {
+  cursor: grabbing;
 }
 
 .react-transform-component,
@@ -52,7 +57,6 @@ canvas {
 .bounding_box {
   position: absolute;
   display: block;
-  background: #007c92aa;
   animation: fadeIn $animationDuration forwards;
   cursor: pointer;
   display: flex;
@@ -62,9 +66,17 @@ canvas {
   color: white;
   text-decoration: none;
   border-radius: 2px;
+  box-shadow: 0 1px 5px -1px #00000000;
+  background: transparent;
+  transition: box-shadow 150ms, backdrop-filter 150ms, background 150ms;
+  // @extend %box;
 
   &.highlight {
-    animation: fadeIn $animationDuration forwards, highlight 500ms normal;
+    animation: fadeIn $animationDuration forwards, highlight 700ms normal;
+  }
+
+  &:hover {
+    @extend %box;
   }
 }
 
@@ -85,8 +97,10 @@ canvas {
   z-index: 1;
   display: flex;
   flex-direction: column;
+  pointer-events: none;
 
   button {
+    pointer-events: auto;
     margin-left: auto;
     background: none;
     border: none;
@@ -113,6 +127,7 @@ canvas {
   }
 
   .content {
+    user-select: none;
     opacity: 0;
     transition: opacity 150ms;
     position: relative;
@@ -152,10 +167,24 @@ canvas {
 
 @keyframes highlight {
   from {
-    box-shadow: 0 0 0 2px #007c92;
+    box-shadow: 0 0 0 2px #feac02;
   }
 
   to {
     box-shadow: 0 0 0 2px transparent;
   }
+}
+
+%box {
+  // background: #1200f32b;
+  // background: #f3a00059;
+  // background: #ffab004f;
+  // box-shadow: 0 0 0 1px #00b4d4;
+  // backdrop-filter: brightness(108%) saturate(80%);
+  // backdrop-filter: sepia(20%);
+  // backdrop-filter: drop-shadow(4px 4px 10px blue);
+  // box-shadow: 0 1px 5px -2px #00000050;
+  box-shadow: 0 0 0 2px #ffc95c;
+  // border: 1px solid #00000080;
+  // box-shadow: inset 0 0 2px 0 #00000050;
 }

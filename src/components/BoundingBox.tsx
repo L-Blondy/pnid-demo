@@ -30,6 +30,7 @@ const BoundingBox = ({
 	const isFirstRenderRef = useRef(true)
 	const linkRef = useRef<HTMLAnchorElement | null>(null)
 	const divRef = useRef<HTMLDivElement | null>(null)
+	const isMountedRef = useRef(true)
 
 	const style = {
 		left: minX * 100 + '%',
@@ -40,6 +41,10 @@ const BoundingBox = ({
 	}
 
 	useEffect(() => resetTransform(), [ to ])
+
+	useEffect(() => {
+		isMountedRef.current = false
+	}, [])
 
 	useEffect(() => {
 		if (!isFirstRenderRef.current) {
@@ -58,35 +63,28 @@ const BoundingBox = ({
 
 	useGlobalMouseMove(() => {
 		isMouseDownRef.current && setIsValidClick(false)
-		setTimeout(() => setIsValidClick(true), 3000)
+		setTimeout(() => !isMouseDownRef.current && setIsValidClick(true), 3000)
 	})
 
 	useGlobalMouseUp(() => {
 		setIsValidClick(true)
 		isMouseDownRef.current = false
 	})
-	console.log('render box')
 
-	return to === fileName
-		? (
-			<div
-				ref={divRef}
-				className='bounding_box'
-				style={style}>
-				{/* Imagine it's a Bounding box */}
-			</div>
-		)
-		: (
-			<Link
-				ref={linkRef}
-				onMouseDown={handleMouseDown}
-				className='bounding_box'
-				style={style}
-				to={to}>
-				{/* Imagine it's a Bounding box */}
-			</ Link>
-		)
+	useEffect(() => {
+		console.log(isValidClick)
+	}, [ isValidClick ])
+
+	return (
+		<Link
+			ref={linkRef}
+			onMouseDown={handleMouseDown}
+			className='bounding_box'
+			style={style}
+			to={to}
+		/>
+	)
 
 }
 
-export default BoundingBox;
+export default React.memo(BoundingBox);

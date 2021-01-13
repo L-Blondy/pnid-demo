@@ -20,7 +20,7 @@ const useIsValidClickRef = () => {
 	useGlobalMouseUp((e: MouseEvent) => {
 		const distance = Math.sqrt((e.clientX - startAtRef.current.x) ** 2 + (e.clientY - startAtRef.current.y) ** 2)
 
-		if (distance > 10)
+		if (distance > 20)
 			isValidClickRef.current = false
 
 		setTimeout(() => {

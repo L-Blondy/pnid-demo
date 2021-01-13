@@ -1,5 +1,5 @@
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { Stage, Layer, Image } from 'react-konva'
 import BoundingBox from './BoundingBox'
@@ -25,12 +25,14 @@ function Page({
 
 	const { fileName } = useParams<{ fileName: string }>()
 	const [ img, setImg ] = useState<HTMLImageElement | null>(null)
+	const resetRef = useRef(noop)
 
-	const dataMap = fileName === fileName1
+	const dataMap = React.useMemo(() => fileName === fileName1
 		? data.page1
 		: fileName === fileName2
 			? data.page2
 			: data.page3
+		, [ fileName ])
 
 	useEffect(() => {
 		setImg(null)
@@ -44,6 +46,21 @@ function Page({
 
 	console.log('render page')
 
+	const boxMap = React.useMemo(() => (
+		dataMap.map(data => (
+			<BoundingBox
+				key={JSON.stringify(data)}
+				minX={data.minX}
+				minY={data.minY}
+				maxX={data.maxX}
+				maxY={data.maxY}
+				to={data.to}
+				resetTransform={resetRef.current}
+				highlightCount={highlightCount}
+			/>
+		))
+	), [ dataMap, highlightCount ])
+
 	return (
 
 		<TransformWrapper
@@ -52,38 +69,31 @@ function Page({
 			doubleClick={{ disabled: true }}
 			reset={{ animation: false, animationTime: 0 }}>
 
-			{({ resetTransform }: { resetTransform: () => void }) => (
+			{({ resetTransform }: { resetTransform: () => void }) => {
+				resetRef.current = resetTransform
 
-				<TransformComponent>
-					<div className='image-wrapper'>
-						<Stage
-							className={`image ${!!img ? 'loaded' : 'pending'}`}
-							width={3308}
-							height={2339}>
+				return (
 
-							<Layer>
-								<Image image={img || undefined} />
-							</Layer>
+					<TransformComponent>
+						<div className='image-wrapper'>
+							<Stage
+								className={`image ${!!img ? 'loaded' : 'pending'}`}
+								width={3308}
+								height={2339}>
 
-						</Stage>
+								<Layer>
+									<Image image={img || undefined} />
+								</Layer>
 
-						{!!img && dataMap.map(data => (
-							<BoundingBox
-								key={JSON.stringify(data)}
-								minX={data.minX}
-								minY={data.minY}
-								maxX={data.maxX}
-								maxY={data.maxY}
-								to={data.to}
-								resetTransform={noop}
-								highlightCount={highlightCount}
-							/>
-						))}
+							</Stage>
+
+							{!!img && boxMap}
 
 
-					</div>
-				</TransformComponent>
-			)}
+						</div>
+					</TransformComponent>
+				)
+			}}
 
 		</TransformWrapper >
 	)
