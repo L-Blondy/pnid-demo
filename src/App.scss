@@ -1,3 +1,5 @@
+$animationDuration: 500ms;
+
 * {
   padding: 0;
   margin: 0;
@@ -11,6 +13,7 @@ body,
   width: 100vw;
   height: 100vh;
   background: #f8f8f8;
+  font-family: 'Segoe UI', 'Roboto', 'Courier', 'Helvetica', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .react-transform-component,
@@ -49,20 +52,92 @@ canvas {
 .bounding_box {
   position: absolute;
   display: block;
-  background: red;
-  opacity: 0.5;
-  animation: fadeIn 300ms forwards;
+  background: #007c92aa;
+  animation: fadeIn $animationDuration forwards;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 2px;
+
+  &.highlight {
+    animation: fadeIn $animationDuration forwards, highlight 500ms normal;
+  }
 }
 
 .image {
-  transition: opacity 300ms;
-
   &.pending {
     opacity: 0;
   }
 
   &.loaded {
+    animation: fadeIn $animationDuration forwards;
+  }
+}
+
+.help {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+
+  button {
+    margin-left: auto;
+    background: none;
+    border: none;
+    border-radius: 500px;
+    cursor: pointer;
+    font-size: 0;
+    background: #0084ff;
+    box-shadow: 0 1px 6px -2px #00000080;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px #b5dbff;
+    }
+
+    svg {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  button:hover + .content,
+  button:focus + .content {
     opacity: 1;
+  }
+
+  .content {
+    opacity: 0;
+    transition: opacity 150ms;
+    position: relative;
+    background: #fcfcfc;
+    padding: 10px 10px 10px 40px;
+    border-radius: 2px;
+    box-shadow: 0 2px 6px 0px #00000030;
+    transform: translate(0, 10px);
+    color: #444;
+    list-style-type: decimal;
+
+    li {
+      line-height: 1.9;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      background: inherit;
+      top: -2px;
+      right: 5px;
+      transform: rotate(45deg);
+    }
   }
 }
 
@@ -72,5 +147,15 @@ canvas {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes highlight {
+  from {
+    box-shadow: 0 0 0 2px #007c92;
+  }
+
+  to {
+    box-shadow: 0 0 0 2px transparent;
   }
 }

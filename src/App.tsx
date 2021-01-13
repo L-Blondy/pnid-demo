@@ -1,16 +1,20 @@
 import './App.scss'
-import { useLocation } from 'react-router-dom'
 import Page from 'src/components/Page'
+import { useState } from 'react'
+import { useIsValidClickRef } from 'src/hooks'
 
 const App = () => {
 
-	const location = useLocation()
+	const isValidClickRef = useIsValidClickRef()
+	const [ highlightCount, setHighlightCount ] = useState(0)
 
-	console.log('location:', location)
+	function handleClick() {
+		isValidClickRef.current && setHighlightCount(c => ++c)
+	}
 
 	return (
-		<div className='app'>
-			<Page key={location.pathname} />
+		<div className='app' onClick={handleClick} >
+			<Page highlightCount={highlightCount} />
 		</div>
 	)
 }

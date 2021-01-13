@@ -1,8 +1,9 @@
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { Stage, Layer, Image } from 'react-konva'
 import BoundingBox from './BoundingBox'
+
 import srcPage1 from 'src/assets/page1.jpg'
 import srcPage2 from 'src/assets/page2.jpg'
 import srcPage3 from 'src/assets/page3.jpg'
@@ -11,12 +12,18 @@ const fileName1 = srcPage1.split('/').pop() as string
 const fileName2 = srcPage2.split('/').pop() as string
 const fileName3 = srcPage3.split('/').pop() as string
 
-function Page() {
+interface Props {
+	highlightCount: number
+}
+
+function Page({
+	highlightCount
+}: Props) {
 
 	const { fileName } = useParams<{ fileName: string }>()
-	const [ img, setImg ] = useState<HTMLImageElement>()
+	const [ img, setImg ] = useState<HTMLImageElement | null>(null)
 
-	const boxBounds = React.useMemo(() => {
+	const boxBounds = useMemo(() => {
 		if (fileName === fileName1) {
 			return {
 				x: '30%',
@@ -41,9 +48,11 @@ function Page() {
 				height: '10%'
 			}
 		}
-	}, [])
+	}, [ fileName ])
 
 	useEffect(() => {
+		setImg(null)
+
 		let _img: HTMLImageElement
 		_img = document.createElement('img')
 		_img.src = '/pnid-demo/static/media/' + fileName
@@ -53,33 +62,44 @@ function Page() {
 
 	return (
 
-		<TransformWrapper wheel={{ step: 200 }} options={{ limitToBounds: false, minScale: 0.5, maxScale: 10 }}>
-			<TransformComponent >
-				<div className='image-wrapper'>
-					<Stage
-						className={`image ${!!img ? 'loaded' : 'pending'}`}
-						width={3308}
-						height={2339}>
+		<TransformWrapper
+			wheel={{ step: 200, }}
+			options={{ limitToBounds: false, minScale: 0.5, maxScale: 10 }}
+			doubleClick={{ disabled: true }}
+			reset={{ animation: false, animationTime: 0 }}>
 
-						<Layer>
-							<Image image={img} />
-						</Layer>
+			{({ resetTransform }: { resetTransform: () => void }) => (
 
-					</Stage>
+				<TransformComponent>
+					<div className='image-wrapper'>
+						<Stage
+							className={`image ${!!img ? 'loaded' : 'pending'}`}
+							width={3308}
+							height={2339}>
 
-					{!!img && (
-						<BoundingBox
-							x={boxBounds.x}
-							y={boxBounds.y}
-							width={boxBounds.width}
-							height={boxBounds.height}
-							to={fileName === fileName1 ? fileName2 : fileName3}
-						/>
-					)}
+							<Layer>
+								<Image image={img || undefined} />
+							</Layer>
 
-				</div>
-			</TransformComponent>
-		</TransformWrapper>
+						</Stage>
+
+						{!!img && (
+							<BoundingBox
+								x={boxBounds.x}
+								y={boxBounds.y}
+								width={boxBounds.width}
+								height={boxBounds.height}
+								to={fileName === fileName1 ? fileName2 : fileName3}
+								resetTransform={resetTransform}
+								highlightCount={highlightCount}
+							/>
+						)}
+
+					</div>
+				</TransformComponent>
+			)}
+
+		</TransformWrapper >
 	)
 }
 

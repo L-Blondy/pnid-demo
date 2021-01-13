@@ -7,3 +7,4 @@ export const useGlobalMouseMove = createGlobalListener('mousemove')
 export const useGlobalMouseUp = createGlobalListener('mouseup')
 export const useGlobalWheel = createGlobalListener('wheel')
 export { default as useKeyBinding } from './useKeyBinding'
+export { default as useIsValidClickRef } from './useIsValidClickRef'
