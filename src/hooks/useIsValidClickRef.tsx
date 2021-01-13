@@ -1,25 +1,35 @@
 import { useRef } from 'react'
-import { useGlobalMouseUp, useGlobalMouseMove, useGlobalMouseDown } from 'src/hooks'
+import { useGlobalMouseUp, useGlobalMouseDown } from 'src/hooks'
 
 const useIsValidClickRef = () => {
 
 	const isValidClickRef = useRef(true)
-	const isMouseDownRef = useRef(false)
-
-	useGlobalMouseDown(() => {
-		isMouseDownRef.current = true
+	const startAtRef = useRef({
+		x: 0,
+		y: 0
 	})
 
-	useGlobalMouseMove(() => {
-		if (!isMouseDownRef.current) return
-		isValidClickRef.current = false
+	useGlobalMouseDown((e: MouseEvent) => {
+
+		startAtRef.current = {
+			x: e.clientX,
+			y: e.clientY
+		}
 	})
 
-	useGlobalMouseUp(() => {
+	useGlobalMouseUp((e: MouseEvent) => {
+		const distance = Math.sqrt((e.clientX - startAtRef.current.x) ** 2 + (e.clientY - startAtRef.current.y) ** 2)
+
+		if (distance > 10)
+			isValidClickRef.current = false
+
 		setTimeout(() => {
 			isValidClickRef.current = true
+			startAtRef.current = {
+				x: 0,
+				y: 0
+			}
 		})
-		isMouseDownRef.current = false
 	})
 
 	return isValidClickRef

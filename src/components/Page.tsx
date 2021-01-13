@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { Stage, Layer, Image } from 'react-konva'
 import BoundingBox from './BoundingBox'
+import data from 'src/data'
 
 import srcPage1 from 'src/assets/page1.jpg'
 import srcPage2 from 'src/assets/page2.jpg'
@@ -11,6 +12,8 @@ import srcPage3 from 'src/assets/page3.jpg'
 const fileName1 = srcPage1.split('/').pop() as string
 const fileName2 = srcPage2.split('/').pop() as string
 const fileName3 = srcPage3.split('/').pop() as string
+
+const noop = () => { }
 
 interface Props {
 	highlightCount: number
@@ -23,32 +26,11 @@ function Page({
 	const { fileName } = useParams<{ fileName: string }>()
 	const [ img, setImg ] = useState<HTMLImageElement | null>(null)
 
-	const boxBounds = useMemo(() => {
-		if (fileName === fileName1) {
-			return {
-				x: '30%',
-				y: '10%',
-				width: '10%',
-				height: '10%'
-			}
-		}
-		if (fileName === fileName2) {
-			return {
-				x: '20%',
-				y: '50%',
-				width: '10%',
-				height: '10%'
-			}
-		}
-		else {
-			return {
-				x: '70%',
-				y: '40%',
-				width: '10%',
-				height: '10%'
-			}
-		}
-	}, [ fileName ])
+	const dataMap = fileName === fileName1
+		? data.page1
+		: fileName === fileName2
+			? data.page2
+			: data.page3
 
 	useEffect(() => {
 		setImg(null)
@@ -59,6 +41,8 @@ function Page({
 		_img.onload = () => setImg(_img)
 		_img.onerror = console.log
 	}, [ fileName ])
+
+	console.log('render page')
 
 	return (
 
@@ -83,17 +67,19 @@ function Page({
 
 						</Stage>
 
-						{!!img && (
+						{!!img && dataMap.map(data => (
 							<BoundingBox
-								x={boxBounds.x}
-								y={boxBounds.y}
-								width={boxBounds.width}
-								height={boxBounds.height}
-								to={fileName === fileName1 ? fileName2 : fileName3}
-								resetTransform={resetTransform}
+								key={JSON.stringify(data)}
+								minX={data.minX}
+								minY={data.minY}
+								maxX={data.maxX}
+								maxY={data.maxY}
+								to={data.to}
+								resetTransform={noop}
 								highlightCount={highlightCount}
 							/>
-						)}
+						))}
+
 
 					</div>
 				</TransformComponent>

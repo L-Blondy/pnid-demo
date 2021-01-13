@@ -1,23 +1,23 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useGlobalMouseUp, useGlobalMouseMove } from 'src/hooks'
 
 
 interface Props {
-	x: string,
-	y: string,
-	width: string,
-	height: string,
+	minX: number,
+	minY: number,
+	maxX: number,
+	maxY: number,
 	to: string,
 	resetTransform: () => void
 	highlightCount: number
 }
 
 const BoundingBox = ({
-	x,
-	y,
-	width,
-	height,
+	minX,
+	minY,
+	maxX,
+	maxY,
 	to,
 	resetTransform,
 	highlightCount
@@ -32,12 +32,13 @@ const BoundingBox = ({
 	const divRef = useRef<HTMLDivElement | null>(null)
 
 	const style = {
-		top: y,
-		left: x,
-		width,
-		height,
+		left: minX * 100 + '%',
+		top: minY * 100 + '%',
+		right: (1 - maxX) * 100 + '%',
+		bottom: (1 - maxY) * 100 + '%',
 		pointerEvents: isValidClick ? 'auto' : 'none' as 'auto' | 'none'
 	}
+
 	useEffect(() => resetTransform(), [ to ])
 
 	useEffect(() => {
@@ -64,6 +65,7 @@ const BoundingBox = ({
 		setIsValidClick(true)
 		isMouseDownRef.current = false
 	})
+	console.log('render box')
 
 	return to === fileName
 		? (
@@ -71,7 +73,7 @@ const BoundingBox = ({
 				ref={divRef}
 				className='bounding_box'
 				style={style}>
-				Imagine it's a Bounding box
+				{/* Imagine it's a Bounding box */}
 			</div>
 		)
 		: (
@@ -81,7 +83,7 @@ const BoundingBox = ({
 				className='bounding_box'
 				style={style}
 				to={to}>
-				Imagine it's a Bounding box
+				{/* Imagine it's a Bounding box */}
 			</ Link>
 		)
 
