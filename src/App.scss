@@ -78,13 +78,13 @@ canvas {
 	}
 
 	&:hover {
-		box-shadow: 0 0 0 2px $shadow-clr !important;
+		box-shadow: 0 0 0 1px $shadow-clr !important;
 		background: $fill-clr !important;
 	}
 }
 
 .show-box .bounding_box {
-	box-shadow: 0 0 0 2px $shadow-clr !important;
+	box-shadow: 0 0 0 1px $shadow-clr !important;
 	background: $fill-clr !important;
 }
 
@@ -109,7 +109,7 @@ canvas {
 
 @keyframes highlight {
 	from {
-		box-shadow: 0 0 0 2px $shadow-clr;
+		box-shadow: 0 0 0 1px $shadow-clr;
 		background: $fill-clr;
 	}
 
