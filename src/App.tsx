@@ -2,27 +2,30 @@ import './App.scss'
 import Page from 'src/components/Page'
 import { useState } from 'react'
 import { useIsValidClickRef } from 'src/hooks'
+import { useKeyBinding, useGlobalKeyDown, useGlobalKeyUp } from 'src/hooks'
 
 const App = () => {
 
-	const [ isShowBoxChecked, setIsShowBoxChecked ] = useState(false)
+	const [ showHotspots, setShowHotspots ] = useState(false)
 	const isValidClickRef = useIsValidClickRef()
 	const [ highlightCount, setHighlightCount ] = useState(0)
+	const keyBinding = useKeyBinding()
 
 	function handleClick() {
 		isValidClickRef.current && setHighlightCount(c => ++c)
 	}
 
+	useGlobalKeyDown(e => {
+		if (keyBinding.matches('Control'))
+			setShowHotspots(true)
+	})
+
+	useGlobalKeyUp(() => setShowHotspots(false))
+
 	return (
-		<div className={`app ${isShowBoxChecked ? 'show-box' : ''}`} onClick={handleClick} >
+		<div className={`app ${showHotspots ? 'show-box' : ''}`} onClick={handleClick} >
 
 			<div className="toolbar">
-
-				<label className='show-box-input'>
-					<span className='label'>Show Hotspots</span>
-					<input type='checkbox' onChange={e => setIsShowBoxChecked(e.target.checked)} />
-					<div className={`fake-input ${isShowBoxChecked ? 'checked' : ''}`} />
-				</label>
 
 				<div className='help'>
 					<button>
@@ -35,7 +38,7 @@ const App = () => {
 					<ul className="content">
 						<li> Use mouse wheel to <b>zoom</b>. </li>
 						<li> Click and drag to <b>move</b>. </li>
-						<li> Click anywhere to <b>show hotspots</b>. </li>
+						<li> Click anywhere or press "Ctrl" to <b>show hotspots</b>. </li>
 						<li> Click a part to display the related <b>P&ID</b>. </li>
 					</ul>
 				</div>

@@ -1,4 +1,6 @@
 $animationDuration: 500ms;
+$shadow-clr: rgba(34, 174, 221, 1);
+$fill-clr: rgba(34, 174, 221, 0.2);
 
 * {
 	padding: 0;
@@ -76,12 +78,14 @@ canvas {
 	}
 
 	&:hover {
-		box-shadow: 0 0 0 2px #ffc95c !important;
+		box-shadow: 0 0 0 2px $shadow-clr !important;
+		background: $fill-clr !important;
 	}
 }
 
 .show-box .bounding_box {
-	box-shadow: 0 0 0 2px #ffc95c !important;
+	box-shadow: 0 0 0 2px $shadow-clr !important;
+	background: $fill-clr !important;
 }
 
 .image {
@@ -105,11 +109,13 @@ canvas {
 
 @keyframes highlight {
 	from {
-		box-shadow: 0 0 0 2px #feac02;
+		box-shadow: 0 0 0 2px $shadow-clr;
+		background: $fill-clr;
 	}
 
 	to {
 		box-shadow: 0 0 0 2px transparent;
+		background: transparent;
 	}
 }
 
@@ -156,7 +162,7 @@ canvas {
 			position: absolute;
 			right: 0;
 			top: 30px;
-			width: 21em;
+			width: 25em;
 			user-select: none;
 			opacity: 0;
 			transition: opacity 150ms;

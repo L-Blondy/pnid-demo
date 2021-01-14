@@ -71,10 +71,6 @@ const BoundingBox = ({
 		isMouseDownRef.current = false
 	})
 
-	useEffect(() => {
-		console.log(isValidClick)
-	}, [ isValidClick ])
-
 	return (
 		<Link
 			ref={linkRef}
