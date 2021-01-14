@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/pnid-demo/static/css/main.6231ac77.chunk.css",
-    "main.js": "/pnid-demo/static/js/main.88473a6d.chunk.js",
-    "main.js.map": "/pnid-demo/static/js/main.88473a6d.chunk.js.map",
+    "main.css": "/pnid-demo/static/css/main.29334148.chunk.css",
+    "main.js": "/pnid-demo/static/js/main.81f693da.chunk.js",
+    "main.js.map": "/pnid-demo/static/js/main.81f693da.chunk.js.map",
     "runtime-main.js": "/pnid-demo/static/js/runtime-main.de933804.js",
     "runtime-main.js.map": "/pnid-demo/static/js/runtime-main.de933804.js.map",
     "static/js/2.9d9a2e8e.chunk.js": "/pnid-demo/static/js/2.9d9a2e8e.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.c30f3054.chunk.js": "/pnid-demo/static/js/3.c30f3054.chunk.js",
     "static/js/3.c30f3054.chunk.js.map": "/pnid-demo/static/js/3.c30f3054.chunk.js.map",
     "index.html": "/pnid-demo/index.html",
-    "static/css/main.6231ac77.chunk.css.map": "/pnid-demo/static/css/main.6231ac77.chunk.css.map",
+    "static/css/main.29334148.chunk.css.map": "/pnid-demo/static/css/main.29334148.chunk.css.map",
     "static/js/2.9d9a2e8e.chunk.js.LICENSE.txt": "/pnid-demo/static/js/2.9d9a2e8e.chunk.js.LICENSE.txt",
     "static/media/App.scss": "/pnid-demo/static/media/fake-input.67f1a325.svg",
     "static/media/page1.e676e72f.jpg": "/pnid-demo/static/media/page1.e676e72f.jpg",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.de933804.js",
     "static/js/2.9d9a2e8e.chunk.js",
-    "static/css/main.6231ac77.chunk.css",
-    "static/js/main.88473a6d.chunk.js"
+    "static/css/main.29334148.chunk.css",
+    "static/js/main.81f693da.chunk.js"
   ]
 }
