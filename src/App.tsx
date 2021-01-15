@@ -6,7 +6,7 @@ import { useKeyBinding, useGlobalKeyDown, useGlobalKeyUp } from 'src/hooks'
 
 const App = () => {
 
-	const [ showHotspots, setShowHotspots ] = useState(false)
+	const [ showHotspots, setShowHotspots ] = useState(true)
 	const isValidClickRef = useIsValidClickRef()
 	const [ highlightCount, setHighlightCount ] = useState(0)
 	const keyBinding = useKeyBinding()

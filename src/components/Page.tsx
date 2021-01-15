@@ -2,16 +2,18 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { Stage, Layer, Image } from 'react-konva'
+import Tooltip, { TooltipData } from './Tooltip'
 import BoundingBox from './BoundingBox'
-import data from 'src/data'
+
+import dataPage1 from 'src/data/dataPage1'
+import dataPage2 from 'src/data/dataPage2'
+import dataPage3 from 'src/data/dataPage3'
 
 import srcPage1 from 'src/assets/page1.jpg'
 import srcPage2 from 'src/assets/page2.jpg'
-import srcPage3 from 'src/assets/page3.jpg'
 
 const fileName1 = srcPage1.split('/').pop() as string
 const fileName2 = srcPage2.split('/').pop() as string
-const fileName3 = srcPage3.split('/').pop() as string
 
 const noop = () => { }
 
@@ -26,12 +28,13 @@ function Page({
 	const { fileName } = useParams<{ fileName: string }>()
 	const [ img, setImg ] = useState<HTMLImageElement | null>(null)
 	const resetRef = useRef(noop)
+	const [ tooltipData, setTooltipData ] = useState<TooltipData | null>(null)
 
 	const dataMap = React.useMemo(() => fileName === fileName1
-		? data.page1
+		? dataPage1
 		: fileName === fileName2
-			? data.page2
-			: data.page3
+			? dataPage2
+			: dataPage3
 		, [ fileName ])
 
 	useEffect(() => {
@@ -48,6 +51,7 @@ function Page({
 
 	const boxMap = React.useMemo(() => (
 		dataMap.map(data => (
+
 			<BoundingBox
 				key={JSON.stringify(data)}
 				minX={data.minX}
@@ -55,8 +59,12 @@ function Page({
 				maxX={data.maxX}
 				maxY={data.maxY}
 				to={data.to}
+				type={data.type}
+				content={data.content}
+				description={data.description}
 				resetTransform={resetRef.current}
 				highlightCount={highlightCount}
+				setTooltipData={setTooltipData}
 			/>
 		))
 	), [ dataMap, highlightCount ])
@@ -69,7 +77,7 @@ function Page({
 			doubleClick={{ disabled: true }}
 			reset={{ animation: false, animationTime: 0 }}>
 
-			{({ resetTransform }: { resetTransform: () => void }) => {
+			{({ resetTransform }: any) => {
 				resetRef.current = resetTransform
 
 				return (
@@ -89,6 +97,7 @@ function Page({
 
 							{!!img && boxMap}
 
+							<Tooltip data={tooltipData} />
 
 						</div>
 					</TransformComponent>

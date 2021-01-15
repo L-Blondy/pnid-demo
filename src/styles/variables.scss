@@ -1,0 +1,16 @@
+$pageLoadanimationDuration: 500ms;
+$tooltip-bg-clr: #fafafa;
+
+@mixin show-box($clr) {
+	box-shadow: 0 0 0 1px $clr !important;
+	background: #{$clr}20 !important;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

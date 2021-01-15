@@ -1,0 +1,141 @@
+@import 'src/styles/variables.scss';
+
+$highlight-duration: 2000ms;
+
+$pnid-clr: #17b6eb;
+$instrument-clr: #72e00b;
+$lineid-clr: #ff5448;
+$equipment-clr: #c300ff;
+
+.bounding_box {
+	position: absolute;
+	display: block;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	text-decoration: none;
+	border-radius: 1px;
+	box-shadow: 0 1px 5px -1px #00000000;
+	background: transparent;
+	transition: box-shadow 50ms, filter 50ms, background 50ms;
+	padding: 0;
+	animation: fadeIn $pageLoadanimationDuration forwards;
+
+	&:hover {
+		filter: brightness(0.8);
+	}
+}
+
+// PNID START
+.pnid {
+	&.highlight {
+		animation: fadeIn $pageLoadanimationDuration forwards, highlight-pnid $highlight-duration normal;
+
+		@keyframes highlight-pnid {
+			from {
+				box-shadow: 0 0 0 1px $pnid-clr;
+				background: #{$pnid-clr}20;
+			}
+
+			to {
+				box-shadow: 0 0 0 1px transparent;
+				background: transparent;
+			}
+		}
+	}
+
+	&:hover {
+		@include show-box($pnid-clr);
+	}
+}
+
+.show-box .pnid {
+	@include show-box($pnid-clr);
+}
+// PNID END
+
+// INSTRUMENT START
+.instrument {
+	&.highlight {
+		animation: fadeIn $pageLoadanimationDuration forwards, highlight-instrument $highlight-duration normal;
+
+		@keyframes highlight-instrument {
+			from {
+				box-shadow: 0 0 0 1px $instrument-clr;
+				background: #{$instrument-clr}20;
+			}
+
+			to {
+				box-shadow: 0 0 0 1px transparent;
+				background: transparent;
+			}
+		}
+	}
+
+	&:hover {
+		@include show-box($instrument-clr);
+	}
+}
+
+.show-box .instrument {
+	@include show-box($instrument-clr);
+}
+// INSTRUMENT END
+
+// LINEID START
+.lineid {
+	&.highlight {
+		animation: fadeIn $pageLoadanimationDuration forwards, highlight-lineid $highlight-duration normal;
+
+		@keyframes highlight-lineid {
+			from {
+				box-shadow: 0 0 0 1px $lineid-clr;
+				background: #{$lineid-clr}20;
+			}
+
+			to {
+				box-shadow: 0 0 0 1px transparent;
+				background: transparent;
+			}
+		}
+	}
+
+	&:hover {
+		@include show-box($lineid-clr);
+	}
+}
+
+.show-box .lineid {
+	@include show-box($lineid-clr);
+}
+// LINEID END
+
+// EQUIPMENT START
+.equipment {
+	&.highlight {
+		animation: fadeIn $pageLoadanimationDuration forwards, highlight-equipment $highlight-duration normal;
+
+		@keyframes highlight-equipment {
+			from {
+				box-shadow: 0 0 0 1px $equipment-clr;
+				background: #{$equipment-clr}20;
+			}
+
+			to {
+				box-shadow: 0 0 0 1px transparent;
+				background: transparent;
+			}
+		}
+	}
+
+	&:hover {
+		@include show-box($equipment-clr);
+	}
+}
+
+.show-box .equipment {
+	@include show-box($equipment-clr);
+}
+// EQUIPMENT END

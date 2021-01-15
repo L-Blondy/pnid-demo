@@ -1,6 +1,4 @@
-$animationDuration: 500ms;
-$shadow-clr: rgba(34, 174, 221, 1);
-$fill-clr: rgba(34, 174, 221, 0.2);
+@import 'src/styles/variables.scss';
 
 * {
 	padding: 0;
@@ -57,65 +55,13 @@ canvas {
 	height: 2339px;
 }
 
-.bounding_box {
-	position: absolute;
-	display: block;
-	animation: fadeIn $animationDuration forwards;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 10px;
-	color: white;
-	text-decoration: none;
-	border-radius: 1px;
-	box-shadow: 0 1px 5px -1px #00000000;
-	background: transparent;
-	transition: box-shadow 150ms, backdrop-filter 150ms, background 150ms;
-
-	&.highlight {
-		animation: fadeIn $animationDuration forwards, highlight 2000ms normal;
-	}
-
-	&:hover {
-		box-shadow: 0 0 0 1px $shadow-clr !important;
-		background: $fill-clr !important;
-	}
-}
-
-.show-box .bounding_box {
-	box-shadow: 0 0 0 1px $shadow-clr !important;
-	background: $fill-clr !important;
-}
-
 .image {
 	&.pending {
 		opacity: 0;
 	}
 
 	&.loaded {
-		animation: fadeIn $animationDuration forwards;
-	}
-}
-
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
-@keyframes highlight {
-	from {
-		box-shadow: 0 0 0 1px $shadow-clr;
-		background: $fill-clr;
-	}
-
-	to {
-		box-shadow: 0 0 0 1px transparent;
-		background: transparent;
+		animation: fadeIn $pageLoadanimationDuration forwards;
 	}
 }
 
@@ -162,12 +108,12 @@ canvas {
 			position: absolute;
 			right: 0;
 			top: 30px;
-			width: 25em;
+			width: 24.5em;
 			user-select: none;
 			opacity: 0;
 			transition: opacity 150ms;
-			background: #fcfcfc;
-			padding: 10px 10px 10px 40px;
+			background: $tooltip-bg-clr;
+			padding: 10px 10px 10px 34px;
 			border-radius: 2px;
 			box-shadow: 0 2px 6px 0px #00000030;
 			transform: translate(0, 10px);

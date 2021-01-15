@@ -25,62 +25,70 @@ const data = {
 	page1: [
 		{
 			minX: 0.02327690,
-			minY: 0.42052587,
+			minY: 0.43052587,
 			maxX: 0.09461911,
-			maxY: 0.44634459,
-			to: fileName2
+			maxY: 0.44534459,
+			type: 'pnid',
+			to: fileName2,
 		},
 		{
 			minX: 0.74758162,
-			minY: 0.65109662,
+			minY: 0.66669662,
 			maxX: 0.81862152,
 			maxY: 0.68277041,
+			type: 'pnid',
 			to: fileName2
 		},
 		{
 			minX: 0.74758162,
-			minY: 0.77452330,
+			minY: 0.78452330,
 			maxX: 0.81862152,
 			maxY: 0.80076956,
+			type: 'pnid',
 			to: fileName2
 		},
 	],
 	page2: [
 		{
 			minX: 0.02448609,
-			minY: 0.28115006,
+			minY: 0.29015006,
 			maxX: 0.09613059,
 			maxY: 0.30696879,
+			type: 'pnid',
 			to: fileName1
 		},
 		{
 			minX: 0.74788392,
-			minY: 0.08106456,
+			minY: 0.09006456,
 			maxX: 0.81922612,
 			maxY: 0.10688328,
+			type: 'pnid',
 			to: fileName1
 		},
 		{
 			minX: 0.74788392,
-			minY: 0.16401898,
+			minY: 0.18001898,
 			maxX: 0.81922612,
 			maxY: 0.19652031,
+			type: 'pnid',
 			to: fileName1
 		},
 		{
 			minX: 0.74788392,
-			minY: 0.26676357,
+			minY: 0.27476357,
 			maxX: 0.81922612,
 			maxY: 0.29157760,
+			type: 'pnid',
 			to: fileName3
 		},
 	],
 	page3: [
 		{
 			minX: 0.02297461,
-			minY: 0.61976357,
+			minY: 0.62676357,
 			maxX: 0.09461911,
 			maxY: 0.64343737,
+			type: 'pnid',
 			to: fileName2
 		},
 	]
