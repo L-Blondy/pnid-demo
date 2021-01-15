@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pnid-demo/static/css/main.fc5439c4.chunk.css",
-    "main.js": "/pnid-demo/static/js/main.6408a1db.chunk.js",
-    "main.js.map": "/pnid-demo/static/js/main.6408a1db.chunk.js.map",
+    "main.js": "/pnid-demo/static/js/main.c9b2fc65.chunk.js",
+    "main.js.map": "/pnid-demo/static/js/main.c9b2fc65.chunk.js.map",
     "runtime-main.js": "/pnid-demo/static/js/runtime-main.dccacc0d.js",
     "runtime-main.js.map": "/pnid-demo/static/js/runtime-main.dccacc0d.js.map",
     "static/js/2.81482f33.chunk.js": "/pnid-demo/static/js/2.81482f33.chunk.js",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.dccacc0d.js",
     "static/js/2.81482f33.chunk.js",
     "static/css/main.fc5439c4.chunk.css",
-    "static/js/main.6408a1db.chunk.js"
+    "static/js/main.c9b2fc65.chunk.js"
   ]
 }
