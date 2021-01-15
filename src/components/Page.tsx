@@ -39,6 +39,7 @@ function Page({
 
 	useEffect(() => {
 		setImg(null)
+		setTooltipData(null)
 
 		let _img: HTMLImageElement
 		_img = document.createElement('img')
