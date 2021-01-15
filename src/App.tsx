@@ -39,7 +39,8 @@ const App = () => {
 						<li> Use mouse wheel to <b>zoom</b>. </li>
 						<li> Click and drag to <b>move</b>. </li>
 						<li> Click anywhere or press "Ctrl" to <b>show hotspots</b>. </li>
-						<li> Click a part to display the related <b>P&ID</b>. </li>
+						<li> Click a part to display the related <b>documentation</b>. </li>
+						<li> Hover a part to <b>show details</b>. </li>
 					</ul>
 				</div>
 
