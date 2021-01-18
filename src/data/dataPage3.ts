@@ -10,8 +10,8 @@ const data = [
 		maxX: 0.09461911,
 		maxY: 0.64343737,
 		type: 'pnid',
-		content: '',
-		description: '',
+		content: 'BAE-71200-PR-DW-1025',
+		description: 'Piping and instrumentation diagram LLP separator pumps',
 		to: fileName2
 	},
 	//PNID END

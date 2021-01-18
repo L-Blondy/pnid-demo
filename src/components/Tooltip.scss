@@ -15,7 +15,7 @@
 	animation: fadeIn 150ms 300ms forwards;
 	display: grid;
 	grid-template-columns: auto auto;
-	line-height: 1.6;
+	line-height: 1.3;
 	column-gap: 1.2em;
 
 	b {
@@ -23,13 +23,20 @@
 		font-style: italic;
 		font-weight: 500;
 		opacity: 0.7;
+		padding: 3px 0;
 	}
 	div {
-		white-space: nowrap;
+		padding: 3px 0;
 		filter: brightness(0.7);
+		max-width: 32ch;
+		// min-width: 21ch;
 
 		&.type {
 			text-transform: capitalize;
+		}
+
+		&.content {
+			white-space: nowrap;
 		}
 
 		&.description {

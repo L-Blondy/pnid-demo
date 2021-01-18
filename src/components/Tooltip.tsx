@@ -68,9 +68,9 @@ const Tooltip = ({
 	return ReactDOM.createPortal(
 		<div className='tooltip' style={style}>
 			<b>Type</b>
-			<div className='type'> {data.type === 'lineid' ? 'Line ID' : data.type} </div>
+			<div className='type'> {data.type === 'lineid' ? 'Line ID' : data.type === 'pnid' ? 'P&ID' : data.type} </div>
 
-			<b>Content</b>
+			<b>Document ID</b>
 			<div className='content'> {data.content} </div>
 
 			<b>Description</b>

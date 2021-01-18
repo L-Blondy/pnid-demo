@@ -12,8 +12,8 @@ const data = [
 		maxX: 0.09613059,
 		maxY: 0.30696879,
 		type: 'pnid',
-		content: '',
-		description: '',
+		content: 'BAE-71200-PR-DW-1020',
+		description: 'Piping and instrumentation diagram LLP separator',
 		to: fileName1
 	},
 	{
@@ -22,8 +22,8 @@ const data = [
 		maxX: 0.81922612,
 		maxY: 0.10688328,
 		type: 'pnid',
-		content: '',
-		description: '',
+		content: 'BAE-71200-PR-DW-1020',
+		description: 'Piping and instrumentation diagram LLP separator',
 		to: fileName1
 	},
 	{
@@ -32,8 +32,8 @@ const data = [
 		maxX: 0.81922612,
 		maxY: 0.19652031,
 		type: 'pnid',
-		content: '',
-		description: '',
+		content: 'BAE-71200-PR-DW-1020',
+		description: 'Piping and instrumentation diagram LLP separator',
 		to: fileName1
 	},
 	{
@@ -42,8 +42,8 @@ const data = [
 		maxX: 0.81922612,
 		maxY: 0.29157760,
 		type: 'pnid',
-		content: '',
-		description: '',
+		content: 'BAE-71300-PR-DW-1000',
+		description: 'Piping and instrumentation diagram crude oil cooler',
 		to: fileName3
 	},
 	//PNID END

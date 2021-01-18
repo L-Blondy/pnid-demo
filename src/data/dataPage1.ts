@@ -10,8 +10,8 @@ const data = [
 		maxX: 0.09461911,
 		maxY: 0.44534459,
 		type: 'pnid',
-		content: '',
-		description: '',
+		content: 'BAE-71200-PR-DW-1025',
+		description: 'Piping and instrumentation diagram LLP separator pumps',
 		to: fileName2,
 	},
 	{
@@ -20,8 +20,8 @@ const data = [
 		maxX: 0.81862152,
 		maxY: 0.68277041,
 		type: 'pnid',
-		content: '',
-		description: '',
+		content: 'BAE-71200-PR-DW-1025',
+		description: 'Piping and instrumentation diagram LLP separator pumps',
 		to: fileName2
 	},
 	{
@@ -30,8 +30,8 @@ const data = [
 		maxX: 0.81862152,
 		maxY: 0.80076956,
 		type: 'pnid',
-		content: '',
-		description: '',
+		content: 'BAE-71200-PR-DW-1025',
+		description: 'Piping and instrumentation diagram LLP separator pumps',
 		to: fileName2
 	},
 	//PNID END
